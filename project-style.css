@@ -1,0 +1,76 @@
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@200,400,600,700&display=swap");
+
+:root {
+  color-scheme: light;
+  --ink: #111;
+  --muted: #333333;
+  --bg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "General Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.page {
+  max-width: 900px;
+  padding: 64px 24px 96px;
+  margin: 0 auto;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 32px;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+}
+
+.back:hover,
+.back:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--muted);
+  margin: 0 0 32px;
+  font-weight: 200;
+}
+
+.section {
+  margin-top: 32px;
+}
+
+.section h2 {
+  font-size: 20px;
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+.section p,
+.section ul {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 1.6;
+}
+
+.section ul {
+  padding-left: 20px;
+}

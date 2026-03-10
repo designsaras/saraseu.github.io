@@ -1,18 +1,198 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <title>Sara Seu</title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>saraseu | design</title>
+    <link rel="stylesheet" href="test.css" />
+  </head>
+  <body>
+    <nav class="nav" aria-label="Primary">
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+    </nav>
 
-  <!-- font Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <main class="intro">
+      <div class="text-base">
+        hi, i'm <span class="text-focus">sara</span>
+      </div>
+      <div class="text-base">
+        uxui graphic interaction <span class="text-focus">designer</span>
+      </div>
+    </main>
 
-</head>
+    <div id="physics-layer" aria-hidden="true"></div>
 
-<body>
+    <script src="https://unpkg.com/matter-js@0.19.0/build/matter.min.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const { Engine, World, Bodies, Runner, Sleeping, Body } = Matter;
+        const layer = document.getElementById("physics-layer");
 
-  <div>Ciao, sono Sara</div>
+        const projects = [
+          { label: "maeus", href: "maeus.html" },
+          { label: "aus wien", href: "aus-wien.html" },
+          { label: "divento pesaro", href: "divento-pesaro.html" },
+          { label: "signum", href: "signum.html" },
+          { label: "shh", href: "shh.html" },
+          { label: "fata cornelia", href: "fata-cornelia.html" },
+        ];
 
-</body>
+        const engine = Engine.create();
+        engine.gravity.y = 2;
+        engine.enableSleeping = true;
+
+        const world = engine.world;
+
+        const bounds = () => ({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+
+        let ground = null;
+        let leftWall = null;
+        let rightWall = null;
+
+        const buildBounds = () => {
+          const { width, height } = bounds();
+          const thickness = 200;
+          if (ground) {
+            World.remove(world, [ground, leftWall, rightWall]);
+          }
+          ground = Bodies.rectangle(
+            width / 2,
+            height + thickness / 2 - 20,
+            width + thickness * 2,
+            thickness,
+            { isStatic: true }
+          );
+          leftWall = Bodies.rectangle(
+            -thickness / 2,
+            height / 2,
+            thickness,
+            height * 2,
+            { isStatic: true }
+          );
+          rightWall = Bodies.rectangle(
+            width + thickness / 2,
+            height / 2,
+            thickness,
+            height * 2,
+            { isStatic: true }
+          );
+          World.add(world, [ground, leftWall, rightWall]);
+        };
+
+        buildBounds();
+
+        const bodies = [];
+        let hovered = null;
+
+        const createButton = (project, index) => {
+          const btn = document.createElement("button");
+          btn.className = "falling-button";
+          btn.type = "button";
+          btn.textContent = project.label;
+          layer.appendChild(btn);
+
+          const rect = btn.getBoundingClientRect();
+          const x = 80 + Math.random() * (window.innerWidth - 160);
+          const y = -80 - index * 60;
+          const angle = (Math.random() - 0.5) * 0.6;
+
+          const body = Bodies.rectangle(x, y, rect.width, rect.height, {
+            restitution: 0.6,
+            friction: 0.4,
+            frictionAir: 0.015,
+          });
+          Body.setAngle(body, angle);
+
+          btn.addEventListener("mouseenter", () => {
+            hovered = body;
+          });
+          btn.addEventListener("mouseleave", () => {
+            if (hovered === body) hovered = null;
+          });
+          btn.addEventListener("click", () => {
+            window.location.href = project.href;
+          });
+
+          bodies.push({ body, el: btn });
+          World.add(world, body);
+        };
+
+        projects.forEach(createButton);
+
+        const runner = Runner.create();
+        Runner.run(runner, engine);
+
+        const sync = () => {
+          bodies.forEach(({ body, el }) => {
+            const { x, y } = body.position;
+            const angle = body.angle;
+            el.style.transform = `translate(${x}px, ${y}px) rotate(${angle}rad)`;
+          });
+
+           bodies.forEach(({ body }) => {
+    const halfWidth = body.bounds.max.x - body.position.x; // metà larghezza
+    const halfHeight = body.bounds.max.y - body.position.y; // metà altezza
+
+      // Limiti orizzontali
+      if (body.position.x - halfWidth < 0)
+        Body.setPosition(body, { x: halfWidth, y: body.position.y });
+      if (body.position.x + halfWidth > window.innerWidth)
+        Body.setPosition(body, { x: window.innerWidth - halfWidth, y: body.position.y });
+
+      // Limite pavimento
+      if (body.position.y + halfHeight > window.innerHeight)
+        Body.setPosition(body, { x: body.position.x, y: window.innerHeight - halfHeight });
+    });
+          requestAnimationFrame(sync);
+        };
+
+        Matter.Events.on(engine, "beforeUpdate", () => {
+          if (!hovered) return;
+          const radius = 200;
+          const strength = 1;
+          const hx = hovered.position.x;
+          const hy = hovered.position.y;
+
+          bodies.forEach(({ body }) => {
+            if (body === hovered) return;
+            const dx = body.position.x - hx;
+            const dy = body.position.y - hy;
+            const dist = Math.hypot(dx, dy);
+            if (dist > 0 && dist < radius) {
+              const forceMag = (1 - dist / radius) * strength;
+              const fx = (dx / dist) * forceMag;
+              const fy = (dy / dist) * forceMag;
+              Body.applyForce(body, body.position, { x: fx, y: fy });
+            }
+          });
+        });
+
+        const settleCheck = () => {
+          let allSleeping = true;
+          for (const { body } of bodies) {
+            if (!body.isSleeping) {
+              allSleeping = false;
+              break;
+            }
+          }
+          if (!allSleeping) {
+            requestAnimationFrame(settleCheck);
+            return;
+          }
+          bodies.forEach(({ body }) => Sleeping.set(body, true));
+        };
+
+        sync();
+        settleCheck();
+
+        window.addEventListener("resize", () => {
+          buildBounds();
+        });
+      });
+    </script>
+  </body>
 </html>

@@ -1,11 +1,119 @@
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@200,400,600,700&display=swap");
+
+:root {
+  color-scheme: light;
+  --ink: #111;
+  --muted: #333333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
+  font-family: "General Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Inter', sans-serif;
-  font-size: 18px;
-  color: #030303;
-  background: white;
+}
+
+.text-base {
+  font-weight: 200;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.text-focus {
+  font-weight: 600;
+  font-style: italic;
+  font-size: 20px;
+}
+
+#physics-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.falling-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #111;
+  background: #fff;
+  color: #111;
+  font-family: "General Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  pointer-events: auto;
+  transform: translate(-9999px, -9999px);
+  transition: background 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+}
+
+.falling-button:hover {
+  background: #111;
+  color: #fff;
+}
+
+.nav {
+  position: fixed;
+  top: 32px;
+  right: 64px;
+  display: flex;
+  gap: 24px;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.nav a {
+  color: var(--ink);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 0%;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+.nav a:hover::after,
+.nav a:focus-visible::after {
+  width: 100%;
+}
+
+.intro {
+  text-align: left;
+  line-height: 1.2;
+  position: relative;
+  z-index: 2;
+}
+
+
+@media (max-width: 640px) {
+  .nav {
+    right: 20px;
+    top: 20px;
+    font-size: 14px;
+    gap: 16px;
+  }
+
+  .intro .line-1,
+  .intro .line-2 {
+    font-size: 18px;
+  }
 }
