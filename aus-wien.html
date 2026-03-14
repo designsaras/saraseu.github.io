@@ -1,38 +1,329 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aus Wien Project</title>
+    <title>Aus Wien</title>
     <link rel="stylesheet" href="project-style.css" />
   </head>
   <body>
-    <main class="page">
-      <a class="back" href="index.html">← Back to home</a>
-      <h1>Aus Wien</h1>
-      <p class="subtitle">Project overview and key outcomes.</p>
+    <main class="page aus-wien">
+      <div class="grid">
+        <div class="col empty"></div>
+        <div class="col content">
+          <header class="top-row">
+            <a class="back" href="index.html">← Back to home</a>
+            <nav class="top-nav">
+              <a href="#curriculum">curriculum</a>
+              <a href="#work">work</a>
+            </nav>
+          </header>
 
-      <section class="section">
-        <h2>Concept</h2>
-        <p>
-          Short description of the goal, context, and what the project aimed to
-          achieve.
-        </p>
-      </section>
+          <div class="header-row">
+            <div class="title-block">
+              <span class="text-focus">Aus Wien</span>
+              <span class="text-base">viaggi sospesi</span>
+            </div>
+            <img class="logo" src="media/aus-wien/aw-logo.svg" alt="Aus Wien logo" />
+          </div>
 
-      <section class="section">
-        <h2>Role</h2>
-        <p>List your responsibilities and key contributions.</p>
-      </section>
+        <div class="content-stack">
+                  <p class="body-text">
+                    Il progetto Aus Wien è una delle dieci installazioni site specific che racconta, 
+                    attraverso le cartoline, il viaggio da Vienna a Roma. Le diverse tappe del viaggio 
+                    vengono rappresentate attraverso 28 strutture che hanno dimensioni variabili sulla 
+                    base di due criteri ripresi dal dataset dell’archivio.
+                  </p>
 
-      <section class="section">
-        <h2>Highlights</h2>
-        <ul>
-          <li>Key deliverable or design decision.</li>
-          <li>Collaboration or research insight.</li>
-          <li>Result or impact.</li>
-        </ul>
-      </section>
+                   <div class="video-block">
+                   <video
+                      class="video"
+                      src="media/aus-wien/aw-video.mp4"
+                      poster="media/aus-wien/aw-28.png"
+                      controls
+                      preload="metadata"
+                    ></video>
+                  </div>
+
+                  <div class="image-row">
+                    <img
+                      class="image-placeholder ratio-4x3"
+                      src="media/aus-wien/aw-1.png"
+                      alt=""
+                    />
+                    <img
+                      class="image-placeholder ratio-4x3"
+                      src="media/aus-wien/aw-13.JPG"                     
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="text-block">
+                    <span class="text-titoletto">L’archivio</span>
+                    <p class="body-text">
+                      Le cartoline contenute in questo progetto provengono dal dataset di Austrian Postcards 
+                      Online (AKON), portale di cartoline della Biblioteca Nazionale Austriaca. 
+                      Quest’ultime sono state digitalizzate tra il 2012 e il 2014 e raccolgono più di 30mila 
+                      cartoline provenienti da tutto il mondo, in una fascia temporale che va dal 1896 fino al 1925.
+                    </p>
+                    <span class="text-titoletto"> </span>
+                    <p class="body-text">Visita l’archivio → <a href="https://labs.onb.ac.at/en/"> labs.onb.ac.at</a></p>
+                  </div>
+
+                  <div class="text-titoletto">Dettagli tecnici</div>
+
+                  <div class="figure-row">
+                    <figure class="figure">
+                      <img
+                        class="image-placeholder ratio-4x3 white-bg"
+                        src="media/aus-wien/aw-15.pdf"
+                      />
+                      <figcaption class="caption">Sezione A-A'</figcaption>
+                    </figure>
+                    <figure class="figure">
+                      <img
+                        class="image-placeholder ratio-4x3 white-bg"
+                        src="media/aus-wien/aw-16.pdf"
+                      
+                      />
+                      <figcaption class="caption">Pianta</figcaption>
+                    </figure>
+                  </div>
+
+                  <figure class="figure figure-wide">
+                    <img
+                      class="image-placeholder ratio-4x3 is-short white-bg"
+                      src="media/aus-wien/aw-14.pdf"                     
+                      alt=""
+                    />
+                    <figcaption class="caption">Dimensione massimali cubi</figcaption>
+                  </figure>
+
+
+                  <div class="text-block">
+                    <span class="text-titoletto">I dati</span>
+                    <p class="body-text">
+                     Le altezze dei parallelepipedi dipendono dall’altitudine della città rispetto al livello del mare, 
+                     mentre le larghezze derivano dal numero di cartoline presenti in quella località. 
+                     Le altezze variano in un intervallo compreso tra 30 mm, per le città situate a quote più basse, 
+                     e 1500 mm, per le città a quote più elevate. Le larghezze, invece, spaziano da 200 mm a 1500 mm.
+                     Infine, la posizione dei parallelepipedi è determinata dalla distanza rispetto a Vienna.
+                    </p>
+                  </div>
+
+                    <div class="text-block">
+                    <span class="text-titoletto">Collage</span>
+                    <p class="body-text">
+                     Lo script utilizzato gestisce un’interfaccia interattiva per il caricamento e la 
+                     visualizzazione di collage di cartoline su un canvas. Per la realizzazione delle grafiche 
+                     della mostra, ogni collage è stato creato utilizzando il file JSON delle cartoline della 
+                     specifica località, inserendo il numero totale di cartoline per quella città. 
+                     Successivamente, le immagini realizzate sono state scaricate e adattate alle dimensioni 
+                     necessarie dei parallelepipedi espositivi.
+                    </p>
+                    <span class="text-titoletto"> </span>
+                    <p class="body-text">Prova lo script → <a href="https://sprocacci.github.io/-8583_HYSTERISCHE_POSTKARTEN-/manuale.html"> [8583 Hysterische Postkarten] </a> designed by Sirio Procacci</p>
+                  </div>
+
+                  <div class="text-titoletto">Realizzazione del progetto</div>
+
+                  <div class="slider" aria-label="Image slider">
+                    <button class="slider-btn prev" type="button" aria-label="Previous slide">
+                      ←
+                    </button>
+                    <div class="slider-viewport">
+                      <div class="slider-track">
+                        <img
+                          class="slide"
+                          src="media/aus-wien/aw-2.JPG"                          
+                          alt=""
+                        />
+                        <img
+                          class="slide"
+                          src="media/aus-wien/aw-3.JPG"                          
+                          alt=""
+                        />
+                        <img
+                          class="slide"
+                          src="media/aus-wien/aw-4.JPG"                          
+                          alt=""
+                        />
+                        <img
+                          class="slide"
+                          src="media/aus-wien/aw-5.JPG"                          
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <button class="slider-btn next" type="button" aria-label="Next slide">
+                      →
+                    </button>
+                  </div>
+
+                  <div class="text-block">
+                    <span class="text-titoletto">Installazione</span>
+                    <p class="body-text">
+                     L’installazione si sviluppa lungo la scalinata principale del giardino della sede della 
+                     Facoltà di Design dell’Università degli Studi della Repubblica di San Marino. È composta 
+                     da 28 parallelepipedi, ciascuno dei quali raffigura una città incontrata durante
+                     il tragitto in auto da Vienna a Roma. Ogni parallelepipedo presenta peculiarità specifiche 
+                     che ne definiscono la geometria: la larghezza indica il numero di cartoline relative a 
+                     quell’area, mentre l’altezza è determinata dall’altitudine del luogo.
+                     Lo scopo del progetto è valorizzare l’archivio digitale Historical Postcards attraverso 
+                     il tema del viaggio e dell’esplorazione.
+                     L’installazione vuole approfondire il materiale dell’archivio stesso, facendo riscoprire o 
+                     scoprire all’utente la bellezza nascosta dietro l’oggetto della cartolina, che porta con 
+                     sé molteplici valori, tra cui l’attesa e la memoria.
+                    </p>
+                  </div>
+
+                  <div class="slider" aria-label="Image slider">
+                    <button class="slider-btn prev" type="button" aria-label="Previous slide">
+                      ←
+                    </button>
+                    <div class="slider-viewport">
+                      <div class="slider-track">
+                        <img
+                          class="slide"
+                          src="media/aus-wien/aw-6.JPG"                          
+                          alt=""
+                        />
+                        <img
+                         class="slide"
+                          src="media/aus-wien/aw-8.JPG"                          
+                          alt=""
+                        />
+                        <img
+                          class="slide"
+                          src="media/aus-wien/aw-9.JPG"                          
+                          alt=""
+                        />
+                        <img
+                          class="slide"
+                          src="media/aus-wien/aw-10.JPG"                          
+                          alt=""
+                        />
+                        <img
+                          class="slide"
+                          src="media/aus-wien/aw-17.JPG"                          
+                          alt=""
+                        />
+                        <img
+                          class="slide"
+                          src="media/aus-wien/aw-21.JPG"                          
+                          alt=""
+                        />
+                        <img
+                          class="slide"
+                          src="media/aus-wien/aw-22.JPG"                          
+                          alt=""
+                        />
+                          <img
+                          class="slide"
+                          src="media/aus-wien/aw-23.JPG"                          
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <button class="slider-btn next" type="button" aria-label="Next slide">
+                      →
+                    </button>
+                  </div>
+
+                    <div class="text-block">
+                    <span class="text-titoletto">Comunicazione visiva</span>
+                    <p class="body-text">
+                     La comunicazione visiva si avvale del supporto di pannelli esplicativi, manifesti 
+                     pubblicitari e logo, che ha la caratteristica di essere variabile all’interno di una 
+                     stessa griglia.
+                    </p>
+                    <p class="body-text">
+                     Il font, GT America Mono, è un carattere monospaziale progettato da Noël Leu, 
+                     Seb McLauchlan e pubblicato da Grilli Type nel 2016. Scelto per simboleggiare 
+                     la macchina da scrivere e rimembrare un periodo dove ogni lettera scritta non 
+                     sarebbe potuta essere cancellata, come nella cartolina.
+                    </p>
+                    <p class="body-text">
+                     Anche i colori non sono lasciati al caso, infatti sono rimandi ai colori delle poste austriache.
+                    </p>
+                  </div>
+
+                  <div class="photo-grid">
+                    <div class="photo-stack">
+                      <img
+                        class="image-placeholder ratio-4x3"
+                          src="media/aus-wien/aw-7.JPG"                          
+                          alt=""
+                      />
+                      <img
+                        class="image-placeholder ratio-4x3"
+                          src="media/aus-wien/aw-27.JPG"                          
+                          alt=""
+                      />
+                    </div>
+                    <img
+                      class="image-placeholder ratio-4x3 photo-tall"
+                      src="media/aus-wien/aw-18.JPG"                          
+                      alt=""
+                    />
+                  </div>
+
+                  
+
+                  <div class="text-block">
+                    <span class="text-titoletto">Conclusioni</span>
+                    <p class="body-text">
+                     Questo progetto si distingue per la capacità di narrare un viaggio attraverso un mezzo 
+                     che oggi è poco conosciuto: le cartoline. Nel contesto attuale, la tecnologia e la sua 
+                     immediata fruizione hanno ridotto l’emozione e la gratificazione di ricevere un messaggio 
+                     da una persona cara. AUS WIEN si propone di valorizzare l’attesa e il ritorno alla scoperta 
+                     di un oggetto che, seppur dimenticato, ci permette di rievocare un passato non così lontano. 
+                     L’installazione, suggestiva per natura, invita gli utenti a esplorare, scoprire e ammirare 
+                     luoghi di un’epoca passata.
+                    </p>
+                    <span class="text-titoletto"> </span>
+                    <p class="body-text">Link al progetto digitale → <a href="https://readymag.website/u3076303496/4854038/"> Aus Wien - All Roads Lead To Vienna </a></p>
+                  </div>                  
+
+                 
+
+                  
+                
+          </div>
+        </div>
+        <div class="col empty"></div>
+      </div>
     </main>
+    <script>
+      document.querySelectorAll(".slider").forEach((slider) => {
+        const track = slider.querySelector(".slider-track");
+        const slides = Array.from(slider.querySelectorAll(".slide"));
+        const prev = slider.querySelector(".prev");
+        const next = slider.querySelector(".next");
+        const visible = 2;
+        const maxIndex = Math.max(0, slides.length - visible);
+        let index = 0;
+
+        const update = () => {
+          track.style.transform = `translateX(calc(-${index * 50}% - ${
+            index * 6
+          }px))`;
+          prev.disabled = index === 0;
+          next.disabled = index === maxIndex;
+        };
+
+        prev.addEventListener("click", () => {
+          index = Math.max(0, index - 1);
+          update();
+        });
+
+        next.addEventListener("click", () => {
+          index = Math.min(maxIndex, index + 1);
+          update();
+        });
+
+        update();
+      });
+    </script>
   </body>
 </html>
