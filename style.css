@@ -49,8 +49,6 @@ body {
   border: 1px solid #111;
   background: #fff;
   color: #111;
-  --hover-bg: #111;
-  --hover-fg: #fff;
   font-family: "General Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
   letter-spacing: 0.02em;
@@ -61,8 +59,8 @@ body {
 }
 
 .falling-button:hover {
-  background: var(--hover-bg);
-  color: var(--hover-fg);
+  background: #111;
+  color: #fff;
 }
 
 .nav {
