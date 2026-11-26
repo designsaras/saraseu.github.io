@@ -187,12 +187,12 @@ em {
   padding-bottom: 16px;
 }
 
-/* two images side by side */
+/* two images side by side, always the same height */
 .pair {
   display: grid;
   grid-template-columns: 2.1fr 1fr;
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
   padding: 0 var(--gutter);
 }
 
@@ -200,8 +200,36 @@ em {
   grid-template-columns: 1fr 1fr;
 }
 
-.pair.middle {
-  align-items: center;
+.pair .media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* even pairs: both images cropped to the same 3:2 frame */
+.pair.even .media img {
+  aspect-ratio: 3 / 2;
+}
+
+/* drawings and sketches: never cropped, centred on white */
+.pair.contain .media img {
+  object-fit: contain;
+  background: #fff;
+}
+
+/* wide + tall pairs: the wide image sets the height, the tall one fills it */
+.pair:not(.even) > .media:first-child img {
+  aspect-ratio: 3 / 2;
+}
+
+.pair:not(.even) > .media:last-child {
+  position: relative;
+}
+
+.pair:not(.even) > .media:last-child img {
+  position: absolute;
+  inset: 0;
 }
 
 .pair + .pair,
@@ -210,6 +238,18 @@ em {
 .panel + .pair,
 .pair + .panel {
   margin-top: 16px;
+}
+
+@media (max-width: 720px) {
+  .pair:not(.even) > .media:last-child {
+    position: static;
+  }
+
+  .pair:not(.even) > .media:last-child img {
+    position: static;
+    height: auto;
+    aspect-ratio: 2 / 3;
+  }
 }
 
 @media (max-width: 560px) {
