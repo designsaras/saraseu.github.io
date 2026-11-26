@@ -100,7 +100,8 @@ em {
   margin: 0;
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(96px, 22vw, 340px);
+  font-size: clamp(44px, 8vw, 120px);
+  overflow-wrap: break-word;
   line-height: 0.82;
   letter-spacing: -0.005em;
   text-transform: uppercase;
@@ -477,6 +478,113 @@ em {
 
   .solutions .arrow {
     display: none;
+  }
+}
+
+/* ---------- work index ---------- */
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px 16px;
+  margin: 0;
+  padding: 0 var(--gutter);
+  list-style: none;
+}
+
+.work-grid a {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.work-grid img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.work-grid a:hover img,
+.work-grid a:focus-visible img {
+  opacity: 0.85;
+}
+
+.work-grid .label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-top: 14px;
+}
+
+.work-grid strong {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.work-grid small {
+  font-size: 14px;
+  font-weight: 200;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* ---------- curriculum ---------- */
+
+.cv-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.cv-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cv-list b {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.cv-list span {
+  grid-column: 1;
+  font-size: 15px;
+  font-weight: 200;
+  color: var(--muted);
+}
+
+.cv-list time {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 15px;
+  font-weight: 200;
+  color: var(--soft);
+  white-space: nowrap;
+}
+
+.portrait {
+  width: min(100%, 360px);
+  margin-top: 20px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.block a.mail {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .work-grid {
+    grid-template-columns: 1fr;
   }
 }
 
