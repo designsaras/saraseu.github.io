@@ -84,6 +84,21 @@ em {
   color: var(--soft);
 }
 
+/* home link + previous / next project arrows */
+.pager {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.pager a:first-child {
+  margin-right: 18px;
+}
+
+.pager .index {
+  font-variant-numeric: tabular-nums;
+}
+
 /* ---------- hero ---------- */
 
 .hero {
