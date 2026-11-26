@@ -3,36 +3,331 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aus Wien Project</title>
-    <link rel="stylesheet" href="project.css" />
+    <title>Aus Wien — Sara Seu</title>
+    <meta
+      name="description"
+      content="Aus Wien, viaggi sospesi: a site-specific installation that tells the journey from Vienna to Rome through historical postcards."
+    />
+    <link rel="stylesheet" href="project-style.css" />
   </head>
   <body>
-    <main class="page">
-      <a class="back" href="test.html">← Back to home</a>
-      <h1>Aus Wien</h1>
-      <p class="subtitle">Project overview and key outcomes.</p>
+    <header class="topbar">
+      <a href="index.html">← sara seu</a>
+      <span class="index">02 / 06</span>
+    </header>
 
-      <section class="section">
-        <h2>Concept</h2>
-        <p>
-          Short description of the goal, context, and what the project aimed to
-          achieve.
+    <main>
+      <section class="hero">
+        <p class="number">02//</p>
+        <h1>Aus Wien</h1>
+        <p class="lede">
+          <em>Viaggi sospesi</em>: one of ten site-specific installations
+          that tell the journey from Vienna to Rome through postcards.
         </p>
+
+        <dl class="meta">
+          <div>
+            <dt>year</dt>
+            <dd>2024</dd>
+          </div>
+          <div>
+            <dt>context</dt>
+            <dd>
+              Information Design Lab, University of San Marino. Prof.
+              Giorgio Uboldi, Marco Luitprandi
+            </dd>
+          </div>
+          <div>
+            <dt>team</dt>
+            <dd>
+              Lucrezia Marcellitti, Sirio Procacci, Rebecca Rizzo, Sara Seu,
+              Alessia Tiberi
+            </dd>
+          </div>
+          <div>
+            <dt>scope</dt>
+            <dd>data-driven installation, visual identity</dd>
+          </div>
+        </dl>
       </section>
 
-      <section class="section">
-        <h2>Role</h2>
-        <p>List your responsibilities and key contributions.</p>
+      <figure class="media bleed">
+        <img
+          src="images/aus-wien/aw-6.jpg"
+          alt="The installation along the stone stairway of the faculty garden: wooden structures of different sizes topped with postcard collages, and a yellow Aus Wien panel."
+          width="1500"
+          height="1000"
+        />
+      </figure>
+
+      <section class="block">
+        <h2>the project</h2>
+        <div class="body">
+          <p>
+            The stops of the journey are represented by
+            <em>28 structures</em>, whose size changes according to two
+            criteria taken from the archive’s dataset.
+          </p>
+        </div>
       </section>
 
-      <section class="section">
-        <h2>Highlights</h2>
-        <ul>
-          <li>Key deliverable or design decision.</li>
-          <li>Collaboration or research insight.</li>
-          <li>Result or impact.</li>
-        </ul>
+      <figure class="panel" style="--panel: #fff; outline: 1px solid var(--line); outline-offset: -1px">
+        <img
+          src="images/aus-wien/logo.svg"
+          alt="The Aus Wien logo: the words viaggi sospesi, AUS and WIEN in white monospaced type on black blocks set on a stepped grid."
+          width="1154"
+          height="201"
+        />
+      </figure>
+
+      <section class="block">
+        <h2>the archive</h2>
+        <div class="body">
+          <p>
+            The postcards come from the dataset of Austrian Postcards Online
+            (AKON), the postcard portal of the Austrian National Library.
+            Digitised between 2012 and 2014, it holds more than
+            <em>30,000 postcards</em> from all over the world, dated from
+            1896 to 1925.
+          </p>
+          <p>
+            <a href="https://labs.onb.ac.at" target="_blank" rel="noopener">Visit the archive → labs.onb.ac.at</a>
+          </p>
+        </div>
       </section>
+
+      <section class="block">
+        <h2>the data</h2>
+        <div class="body">
+          <p>
+            The height of each block depends on the altitude of the town,
+            from 30 mm for the lowest to 1500 mm for the highest. Its width
+            comes from the number of postcards from that place, from 200 to
+            1500 mm. Its position along the stairs follows the distance from
+            Vienna.
+          </p>
+        </div>
+      </section>
+
+      <figure class="media">
+        <img
+          src="images/aus-wien/chart.jpg"
+          alt="Chart of the 28 blocks from Roma to Vienna: bar heights vary from 30 to 1500 mm, with the tallest at Tarvis and Kammer am Attersee."
+          width="1900"
+          height="535"
+          loading="lazy"
+        />
+        <figcaption>Maximum size of each block, from Rome to Vienna.</figcaption>
+      </figure>
+
+      <figure class="media">
+        <img
+          src="images/aus-wien/drawings.jpg"
+          alt="Technical drawings: section A-A' showing the blocks climbing the stairway, and a plan of the stairs with the blocks zigzagging along them."
+          width="1900"
+          height="716"
+          loading="lazy"
+        />
+        <figcaption>Section A–A′ and plan of the stairway.</figcaption>
+      </figure>
+
+      <section class="block">
+        <h2>collage</h2>
+        <div class="body">
+          <p>
+            A script provides an interactive interface to load postcards and
+            arrange them as collages on a canvas. Each collage was built
+            from the JSON file of a town’s postcards, using all the cards
+            from that place. The images were then exported and fitted to the
+            size of each block.
+          </p>
+        </div>
+      </section>
+
+      <figure class="media">
+        <img
+          src="images/aus-wien/aw-8.jpg"
+          alt="Close-up of two wooden blocks topped with black-and-white postcard collages, on the stone steps."
+          width="1500"
+          height="1000"
+          loading="lazy"
+        />
+      </figure>
+
+      <section class="block">
+        <h2>making it</h2>
+        <div class="body">
+          <p>
+            We built the 28 wooden structures ourselves, from the workshop
+            to the stairway.
+          </p>
+        </div>
+      </section>
+
+      <div class="pair even">
+        <figure class="media">
+          <img
+            src="images/aus-wien/aw-2.jpg"
+            alt="Students in the workshop drilling and assembling wooden frames."
+            width="1500"
+            height="1000"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="media">
+          <img
+            src="images/aus-wien/aw-4.jpg"
+            alt="The workshop with wooden structures and materials laid out on the tables."
+            width="1500"
+            height="1000"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+
+      <div class="pair even">
+        <figure class="media">
+          <img
+            src="images/aus-wien/aw-5.jpg"
+            alt="Assembling wooden frames on the stone stairway."
+            width="1500"
+            height="1000"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="media">
+          <img
+            src="images/aus-wien/aw-3.jpg"
+            alt="Two students placing a tall wooden structure against the stone wall."
+            width="1500"
+            height="1000"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+
+      <section class="block">
+        <h2>the installation</h2>
+        <div class="body">
+          <p>
+            The installation runs along the main stairway in the garden of
+            the Faculty of Design of the University of San Marino. Each of
+            the 28 blocks stands for a town met on the drive from Vienna to
+            Rome.
+          </p>
+          <p>
+            The aim is to bring out the Historical Postcards archive through
+            the theme of travel and exploration, and to let people discover
+            the hidden beauty of the postcard, an object that carries many
+            values, among them <em>waiting</em> and <em>memory</em>.
+          </p>
+        </div>
+      </section>
+
+      <div class="pair">
+        <figure class="media">
+          <img
+            src="images/aus-wien/aw-10.jpg"
+            alt="The stairway with blocks of different heights and yellow labels marking each town."
+            width="1500"
+            height="1000"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="media">
+          <img
+            src="images/aus-wien/aw-11.jpg"
+            alt="Vertical view of a tall wooden block on the stairs, its top covered with a postcard collage."
+            width="1000"
+            height="1500"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+
+      <figure class="media">
+        <img
+          src="images/aus-wien/aw-9.jpg"
+          alt="A low wooden block with a postcard collage and yellow labels on the steps, a visitor walking past."
+          width="1500"
+          height="1000"
+          loading="lazy"
+        />
+      </figure>
+
+      <section class="block">
+        <h2>visual communication</h2>
+        <div class="body">
+          <p>
+            Explanatory panels, posters and a logo that can change shape
+            within the same grid.
+          </p>
+          <p>
+            The typeface is GT America Mono, by Noël Leu and Seb McLauchlan
+            for Grilli Type (2016). It was chosen to recall the
+            <em>typewriter</em> and a time when nothing written could be
+            erased, just like on a postcard. The colours refer to those of
+            the Austrian postal service.
+          </p>
+        </div>
+      </section>
+
+      <div class="pair even">
+        <figure class="media">
+          <img
+            src="images/aus-wien/aw-7.jpg"
+            alt="Yellow town labels on the stone steps in monospaced type: 07 Amstetten (AT), 275 m s.l.m., 30 cartoline, 111 km."
+            width="1500"
+            height="1000"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="media">
+          <img
+            src="images/aus-wien/poster.jpg"
+            alt="The black-and-white Aus Wien poster on a stone wall, with the time, place and date 27/06/2024, a passer-by in front."
+            width="1800"
+            height="909"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+
+      <section class="block">
+        <h2>in the end</h2>
+        <div class="body">
+          <p>
+            The project tells a journey through a medium few people know
+            today: the postcard. Technology and its instant use have dulled
+            the thrill of receiving a message from someone we love. Aus Wien
+            gives value back to <em>waiting</em>, and to rediscovering a
+            forgotten object that brings back a past not so far away.
+          </p>
+          <p>
+            <a href="https://readymag.website/u3076303496/4854038/" target="_blank" rel="noopener">See the digital project →</a>
+          </p>
+        </div>
+      </section>
+
+      <figure class="media">
+        <video
+          controls
+          preload="none"
+          playsinline
+          poster="images/aus-wien/video-poster.jpg"
+          width="1280"
+          height="720"
+        >
+          <source src="images/aus-wien/aus-wien.mp4" type="video/mp4" />
+        </video>
+      </figure>
+
+      <a class="next" href="divento-pesaro.html">
+        <small>next project</small>
+        <strong>DiVento Pesaro</strong>
+      </a>
     </main>
+
+    <footer class="credits">© Sara Seu</footer>
   </body>
 </html>
