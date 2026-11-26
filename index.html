@@ -38,8 +38,12 @@
           { label: "fata cornelia", href: "/fata-cornelia" },
         ];
 
-        const engine = Engine.create();
-        engine.gravity.y = 2;
+        // more solver iterations = steadier stacking, less jitter
+        const engine = Engine.create({
+          positionIterations: 10,
+          velocityIterations: 8,
+        });
+        engine.gravity.y = 1;
         engine.enableSleeping = true;
 
         const world = engine.world;
@@ -100,10 +104,13 @@
           const y = -80 - index * 60;
           const angle = (Math.random() - 0.5) * 0.6;
 
+          // pill-shaped body, soft landing: little bounce, more grip and air drag
           const body = Bodies.rectangle(x, y, rect.width, rect.height, {
-            restitution: 0.6,
-            friction: 0.4,
-            frictionAir: 0.015,
+            chamfer: { radius: rect.height / 2 },
+            restitution: 0.05,
+            friction: 0.6,
+            frictionStatic: 0.9,
+            frictionAir: 0.035,
           });
           Body.setAngle(body, angle);
 
@@ -130,30 +137,16 @@
           bodies.forEach(({ body, el }) => {
             const { x, y } = body.position;
             const angle = body.angle;
-            el.style.transform = `translate(${x}px, ${y}px) rotate(${angle}rad)`;
+            el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) rotate(${angle}rad)`;
           });
 
-           bodies.forEach(({ body }) => {
-    const halfWidth = body.bounds.max.x - body.position.x; // metà larghezza
-    const halfHeight = body.bounds.max.y - body.position.y; // metà altezza
-
-      // Limiti orizzontali
-      if (body.position.x - halfWidth < 0)
-        Body.setPosition(body, { x: halfWidth, y: body.position.y });
-      if (body.position.x + halfWidth > window.innerWidth)
-        Body.setPosition(body, { x: window.innerWidth - halfWidth, y: body.position.y });
-
-      // Limite pavimento
-      if (body.position.y + halfHeight > window.innerHeight)
-        Body.setPosition(body, { x: body.position.x, y: window.innerHeight - halfHeight });
-    });
           requestAnimationFrame(sync);
         };
 
         Matter.Events.on(engine, "beforeUpdate", () => {
           if (!hovered) return;
           const radius = 200;
-          const strength = 1;
+          const strength = 0.0012; // gentle push, scaled by each chip's mass
           const hx = hovered.position.x;
           const hy = hovered.position.y;
 
@@ -163,7 +156,8 @@
             const dy = body.position.y - hy;
             const dist = Math.hypot(dx, dy);
             if (dist > 0 && dist < radius) {
-              const forceMag = (1 - dist / radius) * strength;
+              Sleeping.set(body, false);
+              const forceMag = (1 - dist / radius) * strength * body.mass;
               const fx = (dx / dist) * forceMag;
               const fy = (dy / dist) * forceMag;
               Body.applyForce(body, body.position, { x: fx, y: fy });
@@ -191,6 +185,18 @@
 
         window.addEventListener("resize", () => {
           buildBounds();
+          // bring back any chip left outside the new window size
+          const { width, height } = bounds();
+          bodies.forEach(({ body }) => {
+            const hw = (body.bounds.max.x - body.bounds.min.x) / 2;
+            const x = Math.min(Math.max(body.position.x, hw), width - hw);
+            const y = Math.min(body.position.y, height - 60);
+            if (x !== body.position.x || y !== body.position.y) {
+              Sleeping.set(body, false);
+              Body.setPosition(body, { x, y });
+              Body.setVelocity(body, { x: 0, y: 0 });
+            }
+          });
         });
       });
     </script>
