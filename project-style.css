@@ -704,3 +704,60 @@ footer.credits {
     columns: 1;
   }
 }
+
+/* ---------- text: 16px regular, first lines aligned with headings ---------- */
+
+.block h2,
+.block p,
+.block li,
+.block b {
+  line-height: 1.5;
+}
+
+.block p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.block .body > :first-child {
+  margin-top: 0;
+}
+
+.block h2 span,
+.meta dd,
+.figures span,
+.cv-list span,
+.cv-list time {
+  font-weight: 400;
+}
+
+.numbered,
+.solutions li {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.numbered li {
+  margin-bottom: 4px;
+}
+
+.cv-list {
+  border-top: 0;
+}
+
+.cv-list li:first-child {
+  padding-top: 0;
+}
+
+.cv-list b {
+  font-size: 16px;
+}
+
+.cv-list span,
+.cv-list time {
+  font-size: 14px;
+}
+
+.block a.mail {
+  font-size: 16px;
+}
