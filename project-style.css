@@ -809,3 +809,17 @@ footer.credits {
 .work-grid a:focus-visible img {
   opacity: 1;
 }
+
+/* work cards: project names in 16px bold lowercase */
+.work-grid strong {
+  font-family: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: lowercase;
+}
+
+.work-grid small {
+  font-size: 14px;
+  font-weight: 400;
+}
