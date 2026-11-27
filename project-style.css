@@ -647,53 +647,6 @@ footer.credits {
   color: var(--soft);
 }
 
-/* ---------- old placeholder layout (pages not redesigned yet) ---------- */
-
-.page {
-  max-width: 900px;
-  padding: 64px 24px 96px;
-  margin: 0 auto;
-}
-
-.back {
-  display: inline-block;
-  margin-bottom: 32px;
-  text-decoration: none;
-  color: var(--ink);
-}
-
-.page h1 {
-  margin: 0 0 16px;
-  font-size: 40px;
-  font-weight: 600;
-}
-
-.subtitle {
-  font-size: 18px;
-  color: var(--muted);
-  margin: 0 0 32px;
-  font-weight: 200;
-}
-
-.section {
-  margin-top: 32px;
-}
-
-.section h2 {
-  font-size: 20px;
-  margin: 0 0 12px;
-  font-weight: 600;
-}
-
-.section p,
-.section ul {
-  margin: 0 0 12px;
-  color: var(--muted);
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 1.6;
-}
-
 /* ---------- small screens ---------- */
 
 @media (max-width: 720px) {
