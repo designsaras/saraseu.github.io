@@ -823,3 +823,17 @@ footer.credits {
   font-size: 14px;
   font-weight: 400;
 }
+
+/* curriculum: portrait top-aligned with the first line of the about text */
+.about .portrait {
+  margin-top: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
