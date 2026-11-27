@@ -852,10 +852,10 @@ footer.credits {
 
 .cv-contacts {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(2, auto);
   grid-template-areas:
-    "email residence linkedin"
-    "website . birth";
+    "residence birth"
+    "email linkedin";
   gap: 18px 48px;
   margin: 0;
   text-align: right;
@@ -924,10 +924,9 @@ footer.credits {
   .cv-contacts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
+      "residence birth"
       "email email"
-      "linkedin linkedin"
-      "website residence"
-      "birth .";
+      "linkedin linkedin";
     text-align: left;
   }
 
