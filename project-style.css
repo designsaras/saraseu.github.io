@@ -839,22 +839,48 @@ footer.credits {
 }
 
 /* CV PDF links (curriculum page) */
-.hero .cv-links {
+.hero--cv {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 32px;
+}
+
+.hero--cv h1,
+.hero--cv .lede {
+  grid-column: 1;
+}
+
+.hero--cv .cv-links {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  justify-content: flex-end;
   display: flex;
   flex-wrap: wrap;
   gap: 8px 28px;
-  margin: 24px 0 0;
+  margin: 0;
   font-size: 15px;
   font-weight: 200;
 }
 
-.hero .cv-links a {
+.hero--cv .cv-links a {
   color: inherit;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 
-.hero .cv-links a:hover {
+.hero--cv .cv-links a:hover {
   text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .hero--cv {
+    display: block;
+  }
+
+  .hero--cv .cv-links {
+    justify-content: flex-start;
+    margin-top: 24px;
+  }
 }
