@@ -837,3 +837,24 @@ footer.credits {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* CV PDF links (curriculum page) */
+.hero .cv-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin: 24px 0 0;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+.hero .cv-links a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.hero .cv-links a:hover {
+  text-decoration: none;
+}
