@@ -934,3 +934,26 @@ footer.credits {
     justify-content: flex-start;
   }
 }
+
+/* curriculum header: role line sits on the same baseline as the email row */
+.hero--cv {
+  align-items: last baseline;
+}
+
+.hero--cv .cv-side {
+  position: relative;
+  padding-top: 0;
+}
+
+.hero--cv .cv-links {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .hero--cv .cv-links {
+    position: static;
+  }
+}
