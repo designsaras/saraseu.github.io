@@ -925,8 +925,7 @@ footer.credits {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
       "residence birth"
-      "email email"
-      "linkedin linkedin";
+      "email linkedin";
     text-align: left;
   }
 
@@ -955,5 +954,29 @@ footer.credits {
 @media (max-width: 900px) {
   .hero--cv .cv-links {
     position: static;
+  }
+}
+
+/* phones: LinkedIn sits on the same row as the email, on the right */
+@media (max-width: 560px) {
+  .cv-contacts {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    column-gap: 16px;
+  }
+
+  .cv-contacts .c-email dd,
+  .cv-contacts .c-linkedin dd {
+    font-size: clamp(13px, 3.7vw, 16px);
+  }
+}
+
+/* very narrow screens: not enough room for both, keep them stacked */
+@media (max-width: 340px) {
+  .cv-contacts {
+    grid-template-areas:
+      "residence birth"
+      "email email"
+      "linkedin linkedin";
   }
 }
